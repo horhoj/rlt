@@ -1,5 +1,7 @@
 # Используется: 
 
+ДЕМО: https://rlt-one.vercel.app/main
+
 vite, vue, typescript, docker(docker-compose), nginx (для раздачи статики билда), eslint + prettier
 
 # запуск
