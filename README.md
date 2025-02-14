@@ -1,5 +1,3 @@
-# Личная сборка бойлерплэйта для новых проектов.
-
 # Используется: 
 
 vite, vue, typescript, docker(docker-compose), nginx (для раздачи статики билда), eslint + prettier
