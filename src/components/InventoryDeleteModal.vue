@@ -16,6 +16,7 @@ const emit = defineEmits<{
 }>();
 
 const count = ref(1);
+const isShowDeleteConfirmation = ref(false);
 
 const handleInput = (e: InputEvent) => {
   if (e.target && e.target instanceof HTMLInputElement) {
@@ -39,20 +40,35 @@ const handleInput = (e: InputEvent) => {
       <Stub :width="211" :heigth="10" :radius="4" :margins-x="20" :top="16" />
       <Stub :width="211" :heigth="10" :radius="4" :margins-x="35" :top="16" />
     </div>
-    <div class="delete-modal__bottom-divider" />
-    <input
-      class="delete-modal__input"
-      placeholder="Введите количество"
-      type="number"
-      :oninput="handleInput"
-      :defaultValue="1"
-    />
-    <div class="delete-modal__buttons-wrapper">
-      <button class="delete-modal__cancel-btn" :onclick="() => emit('on-cancel')">Отмена</button>
-      <button class="delete-modal__submit-btn" :onclick="() => emit('on-submit', count)">
-        Подтвердить
+    <template v-if="isShowDeleteConfirmation">
+      <div class="delete-modal__bottom-divider" />
+      <input
+        class="delete-modal__input"
+        placeholder="Введите количество"
+        type="number"
+        :oninput="handleInput"
+        :defaultValue="1"
+      />
+      <div class="delete-modal__buttons-wrapper">
+        <button
+          class="delete-modal__cancel-btn"
+          :onclick="() => (isShowDeleteConfirmation = false)"
+        >
+          Отмена
+        </button>
+        <button class="delete-modal__submit-btn" :onclick="() => emit('on-submit', count)">
+          Подтвердить
+        </button>
+      </div>
+    </template>
+    <template v-if="!isShowDeleteConfirmation">
+      <Stub :width="211" :heigth="10" :radius="4" :margins-x="35" :top="16" />
+      <Stub :width="211" :heigth="10" :radius="4" :margins-x="85" :top="16" />
+      <div class="delete-modal__bottom-divider" />
+      <button class="delete-modal__delete-btn" :onclick="() => (isShowDeleteConfirmation = true)">
+        Удалить предмет
       </button>
-    </div>
+    </template>
   </div>
   <div class="delete-modal__close-btn-wrapper">
     <CloseBtn :onclick="() => emit('on-cancel')" />
@@ -82,6 +98,20 @@ const handleInput = (e: InputEvent) => {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.delete-modal__delete-btn {
+  height: 40px;
+  border-radius: 8px;
+  font-size: 14px;
+  width: calc(100% - 30px);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #fa7272;
+  color: #ffffff;
+  display: block;
+  margin: 18px 15px 0 15px;
 }
 
 .delete-modal__submit-btn {
