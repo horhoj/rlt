@@ -18,7 +18,7 @@ const emit = defineEmits<{
 const count = ref(1);
 const isShowDeleteConfirmation = ref(false);
 
-const handleInput = (e: InputEvent) => {
+const handleInput = (e: Event) => {
   if (e.target && e.target instanceof HTMLInputElement) {
     e.target.value = e.target.value.replace(/[^\d-]/g, '');
     console.log(e.target.value);
@@ -46,14 +46,11 @@ const handleInput = (e: InputEvent) => {
         class="delete-modal__input"
         placeholder="Введите количество"
         type="number"
-        :oninput="handleInput"
+        @input="handleInput"
         :defaultValue="1"
       />
       <div class="delete-modal__buttons-wrapper">
-        <button
-          class="delete-modal__cancel-btn"
-          :onclick="() => (isShowDeleteConfirmation = false)"
-        >
+        <button class="delete-modal__cancel-btn" @click="() => (isShowDeleteConfirmation = false)">
           Отмена
         </button>
         <button class="delete-modal__submit-btn" :onclick="() => emit('on-submit', count)">
@@ -65,13 +62,13 @@ const handleInput = (e: InputEvent) => {
       <Stub :width="211" :heigth="10" :radius="4" :margins-x="35" :top="16" />
       <Stub :width="211" :heigth="10" :radius="4" :margins-x="85" :top="16" />
       <div class="delete-modal__bottom-divider" />
-      <button class="delete-modal__delete-btn" :onclick="() => (isShowDeleteConfirmation = true)">
+      <button class="delete-modal__delete-btn" @click="() => (isShowDeleteConfirmation = true)">
         Удалить предмет
       </button>
     </template>
   </div>
   <div class="delete-modal__close-btn-wrapper">
-    <CloseBtn :onclick="() => emit('on-cancel')" />
+    <CloseBtn @click="() => emit('on-cancel')" />
   </div>
 </template>
 

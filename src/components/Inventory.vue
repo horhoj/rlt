@@ -150,13 +150,13 @@ const handleDefautInventory = () => {
               elementDragEnter?.id === item.id && 'inventory__drag-item-enter'
             )
           "
-          :onmouseenter="() => handleDragTargetMouseEnter(item)"
-          :onmouseleave="handleDragTargetMouseLeave"
+          @mouseenter="() => handleDragTargetMouseEnter(item)"
+          @mouseleave="handleDragTargetMouseLeave"
         >
           <template v-if="item.inventoryBody && item.id !== elementDrag?.id">
             <img
               class="inventory__item"
-              :onmousedown="(e: MouseEvent) => handleMouseDown(item, e)"
+              @mousedown="(e: MouseEvent) => handleMouseDown(item, e)"
               :src="getInventoryItemImg(item.inventoryBody.elementType)"
             />
             <div class="inventory__item-counter">{{ item.inventoryBody.count }}</div>
