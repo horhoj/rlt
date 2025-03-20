@@ -5,7 +5,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <button class="close-btn" :onclick="emit('on-click')">
+  <button class="close-btn" @click="emit('on-click')">
     <span class="close-btn__left" />
     <span class="close-btn__rigth" />
   </button>
