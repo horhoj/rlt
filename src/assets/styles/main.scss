@@ -1,0 +1,75 @@
+*,
+*::before,
+*::after {
+  font-family: Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+* {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #242525;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #3c3e44;
+    border-radius: 20px;
+    border: 1px solid #242525;
+  }
+}
+
+:root {
+  --main__app-background: #1D1D1D;
+  --main__block-background: #262626;
+  --main__block-border: 1px solid #4d4d4d;
+}
+
+body {
+  background-color: var(--main__app-background);
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 32px;
+  align-items: center;
+
+  &__main {}
+}
+
+.stub {
+  &__wrapper {
+    background: linear-gradient(90deg, #3c3c3c 0%, #444444 51.04%, #333333 100%);
+  }
+}
+
+.left-block {
+  &__wrapper {
+    border: var(--main__block-border);
+    background-color: var(--main__block-background);
+    border-radius: 12px;
+    min-width: 236px;
+    max-width: 236px;
+    padding: 18px 14px;
+  }
+
+  &__img {
+    width: 208px;
+    height: 240px;
+    display: block;
+  }
+}
+
+
+
+
+
