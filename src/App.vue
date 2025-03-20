@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import Footer from './components/Footer.vue'
+import Inventory from './components/Inventory.vue'
 import LeftBlock from './components/LeftBlock.vue'
 </script>
 
 <template>
-  <main class="app__main">
+  <div class="app__content">
     <LeftBlock />
-  </main>
+    <Inventory />
+  </div>
+  <Footer />
 </template>

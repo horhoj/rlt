@@ -9,7 +9,7 @@ const props = defineProps<{
 
 <template>
   <div
-    class="stub__wrapper"
+    class="stub"
     :style="{
       height: `${props.heigth}px`,
       borderRadius: `${props.radius}px`,

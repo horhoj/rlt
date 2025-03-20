@@ -29,6 +29,7 @@
   --main__app-background: #1D1D1D;
   --main__block-background: #262626;
   --main__block-border: 1px solid #4d4d4d;
+  --main__block-border-radius: 12px;
 }
 
 body {
@@ -43,24 +44,85 @@ body {
   padding: 32px;
   align-items: center;
 
-  &__main {}
+}
+
+.app {
+  &__content {
+    display: flex;
+    gap: 24px;
+  }
+}
+
+.close-btn {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  border: none;
+
+  &__left {
+    width: 15px;
+    height: 1px;
+    background-color: #fff;
+    transform: rotateZ(45deg);
+    position: absolute;
+    left: 0;
+    top: 8px;
+  }
+
+  &__rigth {
+    width: 15px;
+    height: 1px;
+    background-color: #fff;
+    transform: rotateZ(135deg);
+    position: absolute;
+    left: 0;
+    top: 8px;
+  }
+}
+
+.footer {
+  border: var(--main__block-border);
+  background-color: var(--main__block-background);
+  border-radius: var(--main__block-border-radius);
+
+  border-radius: 12px;
+  min-width: 785px;
+  min-height: 72px;
+
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 24px;
+  align-items: center;
+  position: relative;
+
+  &__stub-wrapper {
+    width: 100%;
+    padding-left: 18px;
+    padding-right: 68px;
+  }
+
+  &__close-btn-wrapper {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+  }
 }
 
 .stub {
-  &__wrapper {
-    background: linear-gradient(90deg, #3c3c3c 0%, #444444 51.04%, #333333 100%);
-  }
+  background: linear-gradient(90deg, #3c3c3c 0%, #444444 51.04%, #333333 100%);
 }
 
 .left-block {
-  &__wrapper {
-    border: var(--main__block-border);
-    background-color: var(--main__block-background);
-    border-radius: 12px;
-    min-width: 236px;
-    max-width: 236px;
-    padding: 18px 14px;
-  }
+  border: var(--main__block-border);
+  background-color: var(--main__block-background);
+  border-radius: var(--main__block-border-radius);
+  min-width: 236px;
+  max-width: 236px;
+  padding: 14px 14px 24px 14px;
 
   &__img {
     width: 208px;
@@ -69,7 +131,10 @@ body {
   }
 }
 
-
-
-
-
+.inventory {
+  width: 525px;
+  height: 500px;
+  border: var(--main__block-border);
+  background-color: var(--main__block-background);
+  border-radius: var(--main__block-border-radius);
+}
