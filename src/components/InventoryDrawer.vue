@@ -3,8 +3,9 @@ import { getInventoryItemImg } from '@/helpers/getInventoryItemImg'
 import type { ElementType } from '@/types'
 import Stub from './Stub.vue'
 import InventoryDrawerBtn from './InventoryDrawerBtn.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import CloseBtn from './CloseBtn.vue'
+import classNames from 'classnames'
 
 defineProps<{
   maxCount: number
@@ -17,29 +18,29 @@ const emit = defineEmits<{
 }>()
 
 const isShowDeleteForm = ref(false)
-const count = ref(1)
+const count = ref('1')
 const inputRef = ref<HTMLInputElement | null>(null)
+const error = computed(() => {
+  const val = Number.parseInt(count.value)
+  return Number.isFinite(val)
+})
 
 const handleCancel = () => {
   isShowDeleteForm.value = false
-  count.value = 1
+  count.value = '1'
 }
 
 const handleChange = (e: Event) => {
   if (e.target instanceof HTMLInputElement) {
-    const val = Number.parseInt(e.target.value)
-    if (Number.isFinite(val)) {
-      count.value = val
-      e.target.value = val.toString()
-    } else {
-      count.value = 1
-      e.target.value = '1'
-    }
+    count.value = e.target.value
   }
 }
 
 const handleConfirm = () => {
-  emit('on-submit', count.value)
+  const val = Number.parseInt(count.value)
+  if (error.value) {
+    emit('on-submit', val)
+  }
 }
 </script>
 
@@ -65,7 +66,7 @@ const handleConfirm = () => {
     <Transition>
       <div class="inventory__drawer-delete-form" v-if="isShowDeleteForm">
         <input
-          class="inventory__drawer-delete-form-input"
+          :class="classNames('inventory__drawer-delete-form-input', !error && 'error')"
           placeholder="Введите количество"
           :value="count"
           @input="handleChange"

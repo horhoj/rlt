@@ -29,6 +29,7 @@
   --main__app-background: #1D1D1D;
   --main__block-background: #262626;
   --main__block-border: 1px solid #4d4d4d;
+  --main__block-border-error: 2px solid #FA7272;
   --main__block-border-radius: 12px;
   --main__color: #bbb;
   --main__color-warning: #FA7272;
@@ -275,6 +276,9 @@ body {
         color: var(--main__color);
         width: 100%;
         border-radius: 4px;
+      }
+      &-input.error {
+        border: var(--main__block-border-error);
       }
 
       &-btns-wrapper {
