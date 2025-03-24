@@ -133,6 +133,12 @@ const handleDefautInventory = () => {
       />
     </Transition>
     <div
+      class="inventory__drawer-background"
+      v-if="deleteModalData && deleteModalData.inventoryBody"
+      @click="handleDeleteCancel"
+    />
+
+    <div
       v-if="elementDrag && elementDrag.inventoryBody"
       :style="{ left: `${elementDragPosition.left}px`, top: `${elementDragPosition.top}px` }"
       class="inventory__drag-item-wrapper"

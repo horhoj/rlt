@@ -149,6 +149,16 @@ body {
     left: 20px;
   }
 
+  &__drawer-background {
+    width: 525px;
+    height: 500px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    left: 0;
+    top: 0;
+    z-index: 40;
+  }
+
   &__drawer {
     position: absolute;
     overflow: hidden;
@@ -266,6 +276,7 @@ body {
         width: 100%;
         border-radius: 4px;
       }
+
       &-btns-wrapper {
         margin-top: 20px;
         display: flex;
